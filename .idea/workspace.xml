@@ -9,19 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9bd94e2f-ab78-417f-96a2-a10b8b8790fa" name="Changes" comment="промежуточный">
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/823bc109-b7b1-4456-b120-c81eeebc6fe4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/823bc109-b7b1-4456-b120-c81eeebc6fe4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/allUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/allUsers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/webapp/WEB-INF/pages/newUsers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC/WEB-INF/classes/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC/WEB-INF/classes/web/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC/WEB-INF/pages/allUsers.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC/WEB-INF/pages/allUsers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC/WEB-INF/pages/newUsers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/controller/UserController.class" afterDir="false" />
-    </list>
+    <list default="true" id="9bd94e2f-ab78-417f-96a2-a10b8b8790fa" name="Changes" comment="переделал" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,6 +197,7 @@
       <workItem from="1669236188768" duration="3350000" />
       <workItem from="1669239580608" duration="2967000" />
       <workItem from="1669243134690" duration="3823000" />
+      <workItem from="1669269988246" duration="294000" />
     </task>
     <task id="LOCAL-00001" summary="промежуточный">
       <created>1669097521237</created>
@@ -259,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669243150537</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="переделал">
+      <created>1669270076321</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669270076321</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +274,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="промежуточный" />
-    <option name="LAST_COMMIT_MESSAGE" value="промежуточный" />
+    <MESSAGE value="переделал" />
+    <option name="LAST_COMMIT_MESSAGE" value="переделал" />
   </component>
 </project>
