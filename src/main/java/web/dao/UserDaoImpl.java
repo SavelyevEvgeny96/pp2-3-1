@@ -29,8 +29,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(User updatedUser) {
-        User user = getUserById(updatedUser.getId());
+    public void updateUser(User updatedUser,long id) {
+        User user=manager.find(User.class,id);
         user.setName(updatedUser.getName());
         user.setSurname(updatedUser.getSurname());
         user.setEmail(user.getEmail());

@@ -1,46 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Все Юзеры </title>
+    <title>Spring-mvc + hibernate 2.3.1</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
-<div>
-    <div>
-        <table th:border="1">
-            <thead>
-            <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Age</td>
-                <td>Email</td>
-                <td>Update User</td>
-                <td>Delete User</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user: ${users}">
-                <td><a th:href="@{/{id}(id=${user.getId()})}" th:text="${user.getId()}"></a></td>
-                <td th:text="${user.getName()}"></td>
-                <td th:text="${user.getSurname()}"></td>
-                <td th:text="${user.getEmail()}"></td>
-                <td><a th:href="@{/{id}/update(id=${user.getId()})}">Edit</a></td>
-                <td>
-                    <div>
-                        <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
-                            <p>
-                                <input class="btn-danger troll" type="submit" value="Delete"/>
-                            </p>
-                        </form>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Spring-mvc + hibernate 2.3.1</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+        </ul>
+    </div>
+</nav>
+<div class ="container">
+    <br>
+    <div class = "row">
+        <h3> USERS </h3>
+    </div>
+    <br>
+    <div class = "row">
+        <div class = "col-lg-3">
+            <a th:href = "@{/users/new}" class = "btn btn-primary btn-sm mb-3"> Add User</a>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> ID </th>
+            <th> NAME </th>
+            <th> SURNAME </th>
+            <th> EMAIL </th>
+            <th> ACTIONS </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "user: ${users}">
+            <td th:text = "${user.id}"></td>
+            <td th:text = "${user.name}"></td>
+            <td th:text = "${user.surname}"></td>
+            <td th:text = "${user.email}"></td>
+            <td>
+                <div class="row">
+                    <div class="col-6 col-sm-3">
+                        <form th:method="GET" th:action="@{/users/edit/{id}(id=${user.id})}">
+                            <input type="submit" value="Update"/></form>
                     </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <a th:href="Editit" class="btn btn-success">Editit</a>
-    </div>
+                    <div class="col-6 col-sm-3">
+                        <form th:method="DELETE" th:action="@{/users/{id}(id=${user.id})}">
+                            <input type="submit" value="Delete"/></form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

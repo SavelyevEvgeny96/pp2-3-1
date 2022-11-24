@@ -21,41 +21,42 @@ public class UserController {
         this.userService = service;
     }
 
-    @GetMapping(value = "/all")
+
+
+    @GetMapping()
     public String showAllUsers(Model model) {
         List<User> allUsers = userService.getAllUsers();
-        model.addAttribute("allUsers",allUsers);
+        model.addAttribute("users", allUsers);
         return "allUsers";
     }
 
 
     @GetMapping(value = "/new")
-    public String newUser(Model model) {
-        model.addAttribute("user",new User());
-        return "newUsers";
+    public String newUser(@ModelAttribute("user")User user) {
+        return "newUser";
     }
 
     @PostMapping()
     public String createUser( User user) {
         userService.saveUser(user);
-        return "redirect:/users/all";
+        return "redirect:/users";
     }
 
-    @GetMapping("/edit")
-    public String edit(Model model, @RequestParam("id") long id) {
+    @GetMapping()
+    public String edit(Model model, @RequestParam(value = "id") long id) {
         model.addAttribute("user",userService.getUserById(id));
-        return "editit";
+        return "edit";
     }
 
-    @PatchMapping("/id")
-    public String update( User user,@RequestParam("id") long id) {
-        userService.updateUser(user);
-        return "redirect:/users/all";
+    @PatchMapping()
+    public String update( User user,@RequestParam(value = "id") long id) {
+        userService.updateUser(user,id);
+        return "redirect:/users";
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping()
     public String delete(@RequestParam("id") long id) {
         userService.deleteUser( id);
-        return "redirect:/users/all";
+        return "redirect:/users";
     }
 }
