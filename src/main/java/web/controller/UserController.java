@@ -41,7 +41,7 @@ public class UserController {
         return "redirect:/users/all";
     }
 
-    @GetMapping("/id/edit")
+    @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") long id) {
         model.addAttribute("user",userService.getUserById(id));
         return "editit";
