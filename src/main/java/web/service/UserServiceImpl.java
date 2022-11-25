@@ -6,21 +6,19 @@ import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
 import web.model.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
 @Service
 public class UserServiceImpl implements UserService {
-    @PersistenceContext
-    private EntityManager manager;
+    @Autowired
     private final UserDao dao;
 
-    @Autowired
     public UserServiceImpl(UserDao dao) {
         this.dao = dao;
     }
+
+
     @Override
     @Transactional
     public List<User> getAllUsers() {
@@ -39,21 +37,22 @@ public class UserServiceImpl implements UserService {
         dao.saveUser(user);
     }
 
-    @Override
-    @Transactional
-    public void updateUser(User updatedUser, long id) {
-        User user=manager.find(User.class,id);
-        user.setName(updatedUser.getName());
-        user.setSurname(updatedUser.getSurname());
-        user.setEmail(user.getEmail());
-        manager.merge(user);
-    }
 
     @Override
     @Transactional
-    public void deleteUser(long id) {
-        dao.deleteUser(id);
+    public void updateUser(User updatedUser) {
+     User user = getUserById(updatedUser.getId());
+     user.setName(updatedUser.getName());
+     user.setSurname(updatedUser.getSurname());
+     user.setEmail(updatedUser.getEmail());
+     dao.updateUser(user);
     }
+
+
+
+    @Override
+    @Transactional
+    public void deleteUser(long id) { dao.deleteUser(id); }
 
 
 }

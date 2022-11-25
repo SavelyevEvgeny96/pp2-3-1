@@ -14,13 +14,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/users")
 public class UserController {
+
     private final UserService userService;
 
     @Autowired
     public UserController(UserService service) {
         this.userService = service;
     }
-
 
 
     @GetMapping()
@@ -32,31 +32,31 @@ public class UserController {
 
 
     @GetMapping(value = "/new")
-    public String newUser(@ModelAttribute("user")User user) {
+    public String newUser(@ModelAttribute("user") User user) {
         return "newUser";
     }
 
     @PostMapping()
-    public String createUser( User user) {
+    public String createUser(User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
 
-    @GetMapping()
-    public String edit(Model model, @RequestParam(value = "id") long id) {
-        model.addAttribute("user",userService.getUserById(id));
+    @GetMapping("/edit")
+    public String edit(Model model, User user) {
+        model.addAttribute("user", userService.getUserById(user.getId()));
         return "edit";
     }
 
     @PatchMapping()
-    public String update( User user,@RequestParam(value = "id") long id) {
-        userService.updateUser(user,id);
+    public String update(User userUpdate ,@RequestParam(value = "id") long id) {
+        userService.updateUser(userUpdate);
         return "redirect:/users";
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/id")
     public String delete(@RequestParam("id") long id) {
-        userService.deleteUser( id);
+        userService.deleteUser(id);
         return "redirect:/users";
     }
 }
