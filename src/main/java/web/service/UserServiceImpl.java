@@ -6,12 +6,15 @@ import org.springframework.transaction.annotation.Transactional;
 import web.dao.UserDao;
 import web.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    @PersistenceContext
+    private EntityManager manager;
     private final UserDao dao;
 
     @Autowired
@@ -39,7 +42,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void updateUser(User updatedUser, long id) {
-        dao.updateUser(updatedUser, id);
+        User user=manager.find(User.class,id);
+        user.setName(updatedUser.getName());
+        user.setSurname(updatedUser.getSurname());
+        user.setEmail(user.getEmail());
+        manager.merge(user);
     }
 
     @Override
