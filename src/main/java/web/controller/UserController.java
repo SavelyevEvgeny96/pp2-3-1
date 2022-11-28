@@ -3,7 +3,6 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import web.service.UserService;
 import web.model.User;
@@ -44,24 +43,21 @@ public class UserController {
     }
 
 
-    @GetMapping("/edit/{id}")
-    public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userService.getUserById(id));
+    @GetMapping("/edit")
+    public String edit(@RequestParam int id,Model model) {
+        model.addAttribute("user",userService.getUserById(id));
         return "edit";
     }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, BindingResult bindingResult, @PathVariable("id") int id) {
-        if (bindingResult.hasErrors()) {
-            return "edit";
-        }
-        userService.updateUser(user);
+    @PostMapping("/edit/update")
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam("id") int id) {
+        userService.updateUser(user,id);
         return "redirect:/users";
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
+    @GetMapping("/delete")
+    public String delete(@RequestParam int id) {
         userService.deleteUser(id);
-        return "redirect:/users";
+        return "redirect:/users" ;
     }
 }

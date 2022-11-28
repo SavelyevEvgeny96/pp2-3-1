@@ -52,16 +52,16 @@
             <td>
                 <div class="row">
                     <div class="col-6 col-sm-3">
-                        <form th:method="GET" th:action="@{/users/edit/{id}(id=${user.getId()})}">
-                            <input type="submit" value="Update" />
+                        <a th:href="@{/users/edit(id = ${user.getId()})}">                   <button>Update</button>
 
-                        </form>
+                        </a>
+
                     </div>
                     <div class="col-6 col-sm-3">
 
+                        <a th:href="@{/users/delete(id = ${user.getId()})}">                    <button>Delete</button>
+                        </a>
 
-                        <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
-                            <input type="submit" value="Delete" /></form>
                     </div>
                 </div>
             </td>
